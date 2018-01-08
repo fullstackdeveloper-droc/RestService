@@ -1,0 +1,20 @@
+﻿<section class="mainbar" data-ng-controller="chess as vm">
+    <section class="matter">
+        <div class="row">
+                <div class="col-md-12">
+                    <div class="widget wblue">
+                    <div data-cc-widget-header title="{{vm.title}}"></div>
+                    <div class="widget-content text-center text-info">
+                        <h3>Legitimate Moves for Entered Piece: </h3>
+                         
+                            <label>Choose Chess Piece: </label>
+                            <input type="text" ng-model="piece" /> <span class="fa fa-check" style="color: green;cursor: pointer;" title="Show Possible Moves" ng-click="showValidMoves(piece);"></span>
+                        <div ng-show="showAnswer">
+                            <label>{{vm.answer}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

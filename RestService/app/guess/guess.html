@@ -1,0 +1,80 @@
+﻿<section id="guess-view" class="mainbar" data-ng-controller="guess as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget wblue">
+                        <div data-cc-widget-header title="{{vm.title}}"
+                             allow-collapse="true">
+                        </div>
+
+                        <div class="widget-content text-center text-info">
+                            <div ng-show="guessesDone">
+                                <label>{{vm.playAgainMsg}}</label>
+                                <a href="javascript:;" ng-click="playAgain('Y')">Yes</a>
+                                <a href="javascript:;" ng-click="playAgain('N')">No</a>
+                            </div>
+                            <section ng-show="!userDone">
+                                <div ng-show="vm.guesses.length < 1">
+                                    <h4>Please Enter Number between 1 and 1000 and Click Check Mark: </h4>
+                                    <label>Your Number: </label>
+                                    <input type="text" ng-model="number" /> <span class="fa fa-check" style="color: green;cursor: pointer;" title="Start Guessing this number" ng-click="showGuess();"></span>
+                                    <div class="row" ng-show="showAnswer">
+                                        <div class="row">
+                                            <ul style="display: inline-block;">
+                                                <li style="list-style: none;" ng-repeat="g in vm.guesses track by $index">
+                                                    {{g}} ?
+                                                </li>
+                                            </ul>
+                                            <ul style="display: inline-block;">
+                                                <li style="list-style: none;" ng-repeat="m in vm.messages track by $index">
+                                                    {{m}}
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div ng-show="vm.guesses.length > 0" ng-hide="guessesDone">
+                                    <label>Number to Guess: {{vm.number}}</label>
+                                    <label>Guess Again?</label> <a href="javascript:;" ng-click="showGuess();"> Yes </a>
+                                    <div class="row" ng-show="showAnswer">
+                                        <div class="row">
+                                            <ul style="display: inline-block;">
+                                                <li style="list-style: none;" ng-repeat="g in vm.guesses track by $index">
+                                                    {{g}} ?
+                                                </li>
+                                            </ul>
+                                            <ul style="display: inline-block;">
+                                                <li style="list-style: none;" ng-repeat="m in vm.messages track by $index">
+                                                    {{m}}
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="row">
+                                            <div>
+                                                Average Guesses per turn: {{vm.currentGuesses / 2}}
+                                            </div>
+                                            <div>
+                                                Guesses this turn: {{vm.guesses.length}} {{vm.currentGuesses}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-show="correct" class="row">
+                                    <div>Your number is: <label>{{vm.number}}</label></div>
+                                    <div>It took me <label> {{vm.guesses.length}} </label> guesses </div>
+                                    <div>I averaged <label> {{vm.average}} </label> guesses per game for <label> {{vm.numberOfGames}} </label> Game(s)</div>
+                                </div>
+                            </section>
+                            <div ng-show="userDone" class="row">
+                                <h1>Thanks for Playing!</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
